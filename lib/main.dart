@@ -8,24 +8,18 @@ class TestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Lighting Tests',
       theme: ThemeData(primarySwatch: Colors.yellow),
       home: ProfilePage(
-        title: 'Flutter Demo Home Page',
-        http: Http(get),
+        Http(get),
       ),
     );
   }
 }
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({
-    Key key,
-    this.title,
-    @required this.http,
-  }) : super(key: key);
+  const ProfilePage(this.http, {Key key}) : super(key: key);
 
-  final String title;
   final Http http;
 
   @override
@@ -36,10 +30,6 @@ class ProfilePage extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
             appBar: AppBar(
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.network(snapshot.data.avatar),
-              ),
               title: Text(snapshot.data.name),
             ),
             body: FutureBuilder(

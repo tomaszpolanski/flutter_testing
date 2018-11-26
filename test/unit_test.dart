@@ -4,9 +4,9 @@ import 'package:test_api/test_api.dart';
 
 const userResponse = '''
 {
-        "name": "John",
-        "avatar": "http://some.image",
-        "repository": "http://some.repo"
+  "name": "John",
+  "avatar_url": "http://some.image",
+  "repos_url": "http://some.repo"
 }
 ''';
 

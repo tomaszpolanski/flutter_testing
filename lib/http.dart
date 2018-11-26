@@ -54,7 +54,6 @@ class Repository extends Equatable {
   });
 
   factory Repository.fromJson(Map<String, dynamic> json) {
-    print(json.keys.toList());
     return Repository(
       name: json['name'],
       description: json['description'],
