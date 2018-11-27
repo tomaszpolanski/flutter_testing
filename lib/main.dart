@@ -26,7 +26,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder<User>(
       future: http.fetchUser('tomaszpolanski'),
-      builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
+      builder: (_, AsyncSnapshot<User> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
             appBar: AppBar(title: Text(snapshot.data.name)),
@@ -40,12 +40,12 @@ class ProfilePage extends StatelessWidget {
                   return ListView.separated(
                     itemCount: snapshot.data.length,
                     separatorBuilder: (_, __) => Divider(),
-                    itemBuilder: (BuildContext context, int index) {
+                    itemBuilder: (_, int index) {
                       final repository = snapshot.data[index];
                       return ListTile(
                         title: Text(repository.name),
                         subtitle: repository.description != null
-                            ? Text(repository.description ?? '')
+                            ? Text(repository.description)
                             : null,
                       );
                     },
