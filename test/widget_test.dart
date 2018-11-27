@@ -14,7 +14,7 @@ import 'package:http/http.dart' as http;
 import 'unit_test.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Display user', (WidgetTester tester) async {
     final get = (String url) {
       if (url.contains('/users/')) {
         return Future.value(http.Response(userResponse, 200));
@@ -30,4 +30,42 @@ void main() {
 
     //debugDumpApp();
   });
+
+  testWidgets('Display repositories', (WidgetTester tester) async {
+    final get = (String url) {
+      if (url.contains('/users/')) {
+        return Future.value(http.Response(userResponse, 200));
+      } else {
+        return Future.value(http.Response(repoResponse, 200));
+      }
+    };
+
+    await tester.pumpWidget(MaterialApp(home: ProfilePage(Http(get))));
+//    await tester.pump();
+//    await tester.pump();
+    //vs
+
+    await tester.pumpAndSettle();
+
+    expect(find.text('First'), findsOneWidget);
+
+    //debugDumpApp();
+  });
 }
+
+const repoResponse = '''
+[
+    {
+        "name": "First",
+        "description": "First Description"
+    },
+    {
+        "name": "Second",
+        "description": "Second Description"
+    },
+    {
+        "name": "Third",
+        "description": "Third Description"
+    }
+]
+''';

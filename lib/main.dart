@@ -29,9 +29,7 @@ class ProfilePage extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
-            appBar: AppBar(
-              title: Text(snapshot.data.name),
-            ),
+            appBar: AppBar(title: Text(snapshot.data.name)),
             body: FutureBuilder(
               future: http.fetchRepo(snapshot.data.repository),
               builder: (

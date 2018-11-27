@@ -15,8 +15,12 @@ class Http {
   }
 
   Future<List<Repository>> fetchRepo(String url) async {
-    final List<dynamic> rep = json.decode((await _get(url)).body);
-    return rep.map((it) => Repository.fromJson(it)).toList(growable: false);
+    final result = await _get(url);
+    return json
+        .decode(result.body)
+        .map((it) => Repository.fromJson(it))
+        .cast<Repository>()
+        .toList(growable: false);
   }
 }
 
