@@ -28,6 +28,7 @@ void main() {
 
     //debugDumpApp();
     expect(find.text('John'), findsOneWidget);
+    expect(tester.widget<Text>(find.byKey(nameKey)).data, 'John');
   });
 
   testWidgets('Display repositories', (WidgetTester tester) async {
@@ -46,7 +47,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('First'), findsOneWidget);
-
+    expect(find.byType(ListTile), findsNWidgets(3));
     //debugDumpApp();
   });
 }

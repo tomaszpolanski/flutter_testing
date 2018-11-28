@@ -17,6 +17,8 @@ class TestApp extends StatelessWidget {
   }
 }
 
+const nameKey = Key('user-name');
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage(this.http, {Key key}) : super(key: key);
 
@@ -29,7 +31,9 @@ class ProfilePage extends StatelessWidget {
       builder: (_, AsyncSnapshot<User> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return Scaffold(
-            appBar: AppBar(title: Text(snapshot.data.name)),
+            appBar: AppBar(
+              title: Text(snapshot.data.name, key: nameKey),
+            ),
             body: FutureBuilder(
               future: http.fetchRepo(snapshot.data.repository),
               builder: (
