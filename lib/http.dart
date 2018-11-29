@@ -9,6 +9,9 @@ class Http {
 
   final Future<Response> Function(String url) _get;
 
+  // Kotlin: val _get: (String) -> Future<Response>
+  // Brainfuck: -[--->+<]>-------.-[--->+<]>.[--->+<]>-----.-[--->++<]>-.-----.+.----.
+
   Future<User> fetchUser(String user) async {
     final result = await _get('https://api.github.com/users/$user');
     return User.fromJson(json.decode(result.body));

@@ -7,13 +7,13 @@ void main() {
     test('fetching users', () async {
       final get = (String url) => Future.value(Response(userResponse, 200));
 
-      final tested = await Http(get).fetchUser('John');
+      final User tested = await Http(get).fetchUser('John');
 
       expect(tested.name, 'John');
     });
 
     test('fetching real users', () async {
-      final tested = await Http(get).fetchUser('tomaszpolanski');
+      final User tested = await Http(get).fetchUser('tomaszpolanski');
 
       expect(tested.name, 'Tomek Polański');
     });
