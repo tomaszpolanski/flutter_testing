@@ -41,14 +41,14 @@ void main() {
     };
 
     await tester.pumpWidget(MaterialApp(home: ProfilePage(Http(get))));
-//    await tester.pump();
-//    await tester.pump();
+    // await tester.pump();
+    // await tester.pump();
+    // await tester.pump();
     //vs
     await tester.pumpAndSettle();
 
     expect(find.text('First'), findsOneWidget);
     expect(find.byType(ListTile), findsNWidgets(3));
-    //debugDumpApp();
   });
 }
 

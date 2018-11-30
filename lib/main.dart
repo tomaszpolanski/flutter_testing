@@ -36,10 +36,7 @@ class ProfilePage extends StatelessWidget {
             ),
             body: FutureBuilder(
               future: http.fetchRepo(snapshot.data.repository),
-              builder: (
-                BuildContext context,
-                AsyncSnapshot<List<Repository>> snapshot,
-              ) {
+              builder: (_, AsyncSnapshot<List<Repository>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return ListView.separated(
                     itemCount: snapshot.data.length,
