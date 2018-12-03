@@ -19,14 +19,14 @@ void main() {
     });
 
     group('BONUS: parameterized tests', () {
-      const parameters = const <String, String>{
+      const gdprCompliantParameters = const <String, String>{
         'bob': 'Vadim K',
         'john': 'John M',
         'tom': 'Tom M',
         'tomaszpolanski': 'Tomek Polański',
       };
 
-      parameters.forEach((user, name) {
+      gdprCompliantParameters.forEach((user, name) {
         test('fetches $user users', () async {
           final User tested = await Http(get).fetchUser(user);
 
