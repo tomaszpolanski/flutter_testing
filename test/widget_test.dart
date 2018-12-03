@@ -21,7 +21,7 @@ void main() {
 
     //debugDumpApp();
     expect(find.text('John'), findsOneWidget);
-    expect(tester.widget<Text>(find.byKey(nameKey)).data, 'John');
+    expect(tester.widget<Text>(find.byKey(Key('user-name'))).data, 'John');
   });
 
   testWidgets('Display repositories', (WidgetTester tester) async {
@@ -34,10 +34,6 @@ void main() {
     };
 
     await tester.pumpWidget(MaterialApp(home: ProfilePage(Http(get))));
-    // await tester.pump();
-    // await tester.pump();
-    // await tester.pump();
-    //vs
     await tester.pumpAndSettle();
 
     expect(find.text('First'), findsOneWidget);

@@ -13,14 +13,14 @@ class Http {
   // Brainfuck: -[--->+<]>-------.-[--->+<]>.[--->+<]>-----.-[--->++<]>-.-----.+.----.
 
   Future<User> fetchUser(String user) async {
-    final result = await _get('https://api.github.com/users/$user');
-    return User.fromJson(json.decode(result.body));
+    final response = await _get('https://api.github.com/users/$user');
+    return User.fromJson(json.decode(response.body));
   }
 
   Future<List<Repository>> fetchRepo(String url) async {
-    final result = await _get(url);
+    final response = await _get(url);
     return json
-        .decode(result.body)
+        .decode(response.body)
         .map((it) => Repository.fromJson(it))
         .cast<Repository>()
         .toList(growable: false);

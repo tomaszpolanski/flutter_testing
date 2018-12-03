@@ -4,7 +4,7 @@ import 'package:test_api/test_api.dart';
 
 void main() {
   group('Http client', () {
-    test('fetching users', () async {
+    test('fetches users', () async {
       final get = (String url) => Future.value(Response(userResponse, 200));
 
       final User tested = await Http(get).fetchUser('John');
@@ -12,7 +12,7 @@ void main() {
       expect(tested.name, 'John');
     });
 
-    test('fetching real users', () async {
+    test('fetches real users', () async {
       final User tested = await Http(get).fetchUser('tomaszpolanski');
 
       expect(tested.name, 'Tomek Polański');
