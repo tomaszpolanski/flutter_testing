@@ -17,21 +17,21 @@ void main() {
 
       expect(tested.name, 'Tomek Polański');
     });
+  });
 
-    group('BONUS: parameterized tests', () {
-      const gdprCompliantParameters = const <String, String>{
-        'bob': 'Vadim K',
-        'john': 'John M',
-        'tom': 'Tom M',
-        'tomaszpolanski': 'Tomek Polański',
-      };
+  group('BONUS: parameterized tests', () {
+    const gdprCompliantParameters = const <String, String>{
+      'bob': 'Vadim K',
+      'john': 'John M',
+      'tom': 'Tom M',
+      'tomaszpolanski': 'Tomek Polański',
+    };
 
-      gdprCompliantParameters.forEach((user, name) {
-        test('fetches $user users', () async {
-          final User tested = await Http(get).fetchUser(user);
+    gdprCompliantParameters.forEach((user, name) {
+      test('fetches $user users', () async {
+        final User tested = await Http(get).fetchUser(user);
 
-          expect(tested.name, startsWith(name));
-        });
+        expect(tested.name, startsWith(name));
       });
     });
   });
